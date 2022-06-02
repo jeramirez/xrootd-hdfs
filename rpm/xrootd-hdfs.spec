@@ -6,7 +6,7 @@ Summary: HDFS plugin for xrootd
 Group: System Environment/Development
 License: BSD
 URL: https://github.com/bbockelm/xrootd-hdfs
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}-1.1.tar.gz
 
 %define xrootd_current_major 5
 %define xrootd_current_minor 1
