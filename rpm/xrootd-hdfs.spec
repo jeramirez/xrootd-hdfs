@@ -1,6 +1,6 @@
 Name: xrootd-hdfs
 Version: 2.2.0
-Release: 1%{?dist}
+Release: 1.1.1%{?dist}
 Summary: HDFS plugin for xrootd
 
 Group: System Environment/Development
@@ -18,7 +18,7 @@ BuildRequires: xrootd-devel >= 1:%{xrootd_current_major}
 BuildRequires: xrootd-devel <  1:%{xrootd_next_major}
 BuildRequires: cmake
 BuildRequires: /usr/include/hdfs.h
-BuildRequires: java-devel = 1:1.7.0
+BuildRequires: java-devel = 1:1.8.0
 BuildRequires: jpackage-utils
 BuildRequires: openssl-devel
 BuildRequires: zlib-devel
@@ -75,6 +75,14 @@ rm $RPM_BUILD_ROOT%{_bindir}/xrootd_hdfs_envcheck
 %{_includedir}/XrdHdfs.hh
 
 %changelog
+* Mon May 30 2022 Juan Eduardo Ramirez <juaneduardo.ramirez@upr.edu> - 2.2.0-1.1.1
+- Rebuild against hadoop-2.10 (bigtop version)
+- Rebuild against java-devel-1.8.0
+
+* Tue Jun 01 2021 Mátyás Selmeci <matyas@cs.wisc.edu> - 2.2.0-1.1
+- Add SOFTWARE-4645-usernames-with-tokens.patch to fix finding the right
+  username with token auth (SOFTWARE-4645, #36)
+
 * Thu Mar 11 2021 Carl Edquist <edquist@cs.wisc.edu> - 2.2.0-1
 - Build against xrootd 5 (SOFTWARE-3923, #32)
 - Only write checksum file if hdfsCloseFile() was successful (#34)
