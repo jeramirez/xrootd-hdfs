@@ -50,11 +50,10 @@ Group: System Environment/Development
 %build
 sed -i 's|@devel@|%{version}|' src/XrdHdfs.cc
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
-make VERBOSE=1 %{?_smp_mflags} -C redhat-linux-build
+%cmake_build
 
 %install
-cd redhat-linux-build
-make install DESTDIR=$RPM_BUILD_ROOT
+%cmake_install
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xrootd
 cd ..
