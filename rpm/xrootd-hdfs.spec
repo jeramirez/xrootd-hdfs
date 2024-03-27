@@ -18,7 +18,7 @@ BuildRequires: xrootd-devel >= 1:%{xrootd_current_major}
 BuildRequires: xrootd-devel <  1:%{xrootd_next_major}
 BuildRequires: cmake
 BuildRequires: /usr/include/hdfs.h
-BuildRequires: java-devel = 1:1.8.0
+BuildRequires: java-devel >= 1:1.8.0
 BuildRequires: jpackage-utils
 BuildRequires: openssl-devel
 BuildRequires: zlib-devel
