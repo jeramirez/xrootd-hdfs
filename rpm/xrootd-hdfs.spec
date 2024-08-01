@@ -43,12 +43,14 @@ Group: System Environment/Development
 %build
 sed -i 's|@devel@|%{version}|' src/XrdHdfs.cc
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
-make VERBOSE=1 %{?_smp_mflags}
+make VERBOSE=1 %{?_smp_mflags} -C redhat-linux-build
 
 %install
+cd redhat-linux-build
 make install DESTDIR=$RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xrootd
+cd ..
 sed -e "s#@LIBDIR@#%{_libdir}#" rpm/xrootd.sample.hdfs.cfg.in > $RPM_BUILD_ROOT%{_sysconfdir}/xrootd/xrootd.sample.hdfs.cfg
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
@@ -65,7 +67,6 @@ rm $RPM_BUILD_ROOT%{_bindir}/xrootd_hdfs_envcheck
 %files
 %defattr(-,root,root,-)
 %{_libdir}/libXrdHdfs-*.so
-%{_libdir}/libXrdHdfs-*.so.*
 %{_libdir}/libXrdHdfsReal-*.so
 %{_sysconfdir}/xrootd/xrootd.sample.hdfs.cfg
 %{_libexecdir}/xrootd-hdfs/xrootd_hdfs_envcheck
