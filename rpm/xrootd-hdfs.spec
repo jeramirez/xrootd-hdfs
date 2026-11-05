@@ -55,7 +55,6 @@ sed -i 's|@devel@|%{version}|' src/XrdHdfs.cc
 %cmake_install
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xrootd
-cd ..
 sed -e "s#@LIBDIR@#%{_libdir}#" rpm/xrootd.sample.hdfs.cfg.in > $RPM_BUILD_ROOT%{_sysconfdir}/xrootd/xrootd.sample.hdfs.cfg
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
